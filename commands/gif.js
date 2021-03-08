@@ -18,5 +18,6 @@ module.exports = function (msg) {
             break;
         default:
             console.log('No such gif');
+            break;
     }
 }
