@@ -22,8 +22,8 @@ module.exports = async function (msg, keywords) {
             const url = `https://api.tenor.com/v1/search?q=${keywords}&key=${process.env.TENOR_KEY}`;
             const response = await fetch(url);
             const result = await response.json();
-            const index = Math.floor(Math.random() * result.results.length);
-            msg.channel.send(result.results[index].url);
+            const index = await Math.floor(Math.random() * result.results.length);
+            await msg.channel.send(result.results[index].url);
             break;
     }
 }
