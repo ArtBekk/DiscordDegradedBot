@@ -1,8 +1,8 @@
 const fetch = require('node-fetch');
 
-module.exports = function (msg, args) {
+module.exports = function (msg, request) {
     console.log("Sending gif");
-    switch (args) {
+    switch (request) {
         case 'pug':
             msg.channel.send('https://media.giphy.com/media/ZX63w9xm4ilgs/giphy.gif');
             break;
