@@ -1,18 +1,14 @@
-const gif = require ("./commands/gif.js")
+const gif = require("./commands/gif.js")
 const ytPlayer = require("./commands/ytPlayer.js")
+const status = require("./commands/status.js")
+
+const commands = {ytPlayer, gif, status};
 
 module.exports = async function (msg) {
-    if (msg.guild.id === '336199770185924608')
-    {
-        switch (msg.content)
-        {
-            case '!play':
-                console.log('Music request');
-                //TODO implement player from youtube
-                break;
-            default:
-                console.log('Gif request');
-                gif(msg);
-        }
+    let args = msg.content.split(" ");
+    let command = args.shift().toString();
+    if (command.charAt(0) === '!') {
+        command = command.substring(1);
+        commands[command](msg, args);
     }
 }
