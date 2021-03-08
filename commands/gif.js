@@ -1,8 +1,8 @@
 const fetch = require('node-fetch');
 
-module.exports = function (msg, request) {
+module.exports = async function (msg, keywords) {
     console.log("Sending gif");
-    switch (request) {
+    switch (keywords) {
         case 'pug':
             msg.channel.send('https://media.giphy.com/media/ZX63w9xm4ilgs/giphy.gif');
             break;
@@ -20,11 +20,11 @@ module.exports = function (msg, request) {
             break;
         default:
             console.log('Making a request for random gif from Tenor')
-            fetch(`https://api.tenor.com/v1/search?q=${request}&key=${process.env.TENORKEY}`).then(json => {
-                const parsedJson = JSON.parse(json);
-                const index = Math.floor(Math.random() * parsedJson.results.length);
-                msg.channel.send(parsedJson.results[index].url);
-            })
+            const url = `https://api.tenor.com/v1/search?q=${keywords}&key=${process.env.TENOR_KEY}`;
+            const response = await fetch(url);
+            const result = await response.json();
+            const index = Math.floor(Math.random() * result.results.length);
+            msg.channel.send(result.results[index].url);
             break;
     }
 }
