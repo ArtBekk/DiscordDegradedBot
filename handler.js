@@ -5,7 +5,6 @@ const status = require("./commands/status.js")
 const commands = {ytPlayer, gif, status};
 
 module.exports = async function (msg) {
-    console.log('Handling a command')
     let args = msg.content.split(" ");
     let command = args.shift();
     if (command.charAt(0) === '!') {

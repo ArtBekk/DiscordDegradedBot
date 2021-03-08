@@ -19,7 +19,6 @@ module.exports = async function (msg, keywords) {
             msg.channel.send('https://media.giphy.com/media/b3Gp6a25caNZC/giphy.gif');
             break;
         default:
-            console.log('Making a request for random gif from Tenor')
             const url = `https://api.tenor.com/v1/search?q=${keywords}&key=${process.env.TENOR_KEY}`;
             const response = await fetch(url);
             const result = await response.json();
