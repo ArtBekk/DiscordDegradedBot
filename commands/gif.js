@@ -20,9 +20,10 @@ module.exports = function (msg, request) {
             break;
         default:
             console.log('Making a request for random gif from Tenor')
-            fetch(`https://api.tenor.com/v1/search?q=${request}&key=${process.env.TENORKEY}&contentfilter=off`).then(json => {
-                const index = Math.floor(Math.random() * json.results.length);
-                msg.channel.send(json.results[index].url);
+            fetch(`https://api.tenor.com/v1/search?q=${request}&key=${process.env.TENORKEY}`).then(json => {
+                const parsedJson = JSON.parse(json);
+                const index = Math.floor(Math.random() * parsedJson.results.length);
+                msg.channel.send(parsedJson.results[index].url);
             })
             break;
     }
