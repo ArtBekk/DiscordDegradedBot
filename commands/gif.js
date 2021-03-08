@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+const fetch = require('node-fetch');
 
 module.exports = function (msg, args) {
     console.log("Sending gif");
@@ -25,8 +25,8 @@ module.exports = function (msg, args) {
                 keywords = args.join(" ");
             }
             let url = `https://api.tenor.com/v1/search?q=${keywords}&key=${process.env.TENORKEY}`;
-            let response = await fetch(url);
-            let json = await response.json();
+            let response = fetch(url);
+            let json = response.json();
             const index = Math.floor(Math.random() * json.results.length);
             msg.channel.send(json.results[index].url);
             break;
