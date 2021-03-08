@@ -19,11 +19,10 @@ module.exports = async function (msg, keywords) {
             msg.channel.send('https://media.giphy.com/media/b3Gp6a25caNZC/giphy.gif');
             break;
         default:
-            const url = `https://api.tenor.com/v1/search?q=${keywords}&key=${process.env.TENOR_KEY}`;
-            const response = await fetch(url);
-            const result = await response.json();
-            const index = await Math.floor(Math.random() * result.results.length);
-            await msg.channel.send(result.results[index].url);
-            break;
+            let url = `https://api.tenor.com/v1/search?q=${keywords}&key=${process.env.TENOR_KEY}`;
+            let response = await fetch(url);
+            let json = await response.json();
+            const index = Math.floor(Math.random() * json.results.length);
+            msg.channel.send(json.results[index].url);
     }
 }
