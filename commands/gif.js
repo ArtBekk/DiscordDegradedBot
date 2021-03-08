@@ -18,6 +18,42 @@ module.exports = async function (msg, keywords) {
         case 'wiggle':
             msg.channel.send('https://media.giphy.com/media/b3Gp6a25caNZC/giphy.gif');
             break;
+        case 'smugwink':
+            msg.channel.send('https://media.giphy.com/media/wkW0maGDN1eSc/giphy.gif');
+            break;
+        case 'kawaii':
+            msg.channel.send('https://media.giphy.com/media/anDhBXwgvIa7m/giphy.gif');
+            break;
+        case 'eh?':
+            msg.channel.send('https://media.giphy.com/media/3o7btMCltyDvSgF92E/giphy.gif');
+            break;
+        case 'владыка':
+            msg.channel.send('https://media.giphy.com/media/Mfq2ko7m1eMaQ/giphy.gif');
+            break;
+        case 'derpmeow':
+            msg.channel.send('https://tenor.com/view/cat-meow-big-lips-gif-13233291');
+            break;
+        case 'че бля' || 'чебля' || 'чёбля' || 'чё бля' :
+            msg.channel.send('https://tenor.com/view/buff-pikachu-strong-muscle-pokemon-gif-15308559');
+            break;
+        case 'насука' || 'нассука' || 'на сука' || 'на ссука' :
+            msg.channel.send('https://tenor.com/view/anime-gif-9509158');
+            break;
+        case 'дя' :
+            msg.channel.send('https://tenor.com/view/anime-sparkle-happy-gif-6014346');
+            break;
+        case 'бля' :
+            msg.channel.send('https://tenor.com/view/blends-anime-maika-gif-10176024');
+            break;
+        case 'nom' || 'жрать' :
+            msg.channel.send('https://tenor.com/view/eat-crab-anime-loli-dragon-gif-9920851');
+            break;
+        case 'ня' :
+            msg.channel.send('https://tenor.com/view/anime-cat-cute-gif-16038419');
+            break;
+        case 'батя' :
+            msg.channel.send('https://tenor.com/view/norogami-anime-slide-gif-4697082');
+            break;
         default:
             let url = `https://api.tenor.com/v1/search?q=${keywords}&key=${process.env.TENOR_KEY}`;
             let response = await fetch(url);
