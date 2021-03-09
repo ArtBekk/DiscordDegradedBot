@@ -22,6 +22,5 @@ module.exports = async function (msg, args) {
             .on('finish', () => {
                 voiceChannel.leave();
             });
-
     }
 }
