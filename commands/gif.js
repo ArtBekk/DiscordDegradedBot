@@ -1,6 +1,7 @@
 const fetch = require('node-fetch');
 
-module.exports = async function (msg, keywords) {
+module.exports = async function (msg, args) {
+    const keywords = args.join(' ');
     switch (keywords) {
         case 'pug':
             msg.channel.send('https://media.giphy.com/media/ZX63w9xm4ilgs/giphy.gif');

@@ -2,11 +2,12 @@ const ytdl = require('ytdl-core');
 const ytSearch = require('yt-search');
 
 module.exports = async function (msg, args) {
+    const request = args.join(' ');
     const voiceChannel = msg.member.voice.channel;
 
     if (!voiceChannel) msg.reply("You'd better get your ass in some voice channel before asking me that, fam");
 
-    if (!args.length) msg.reply("Don't spam commands without actually telling me what to do idiot");
+    if (!request.length) msg.reply("Don't spam commands without actually telling me what to do idiot");
 
     const validURL = (str) => {
         var regex = /(http|https):\/\/(\w+:{0,1}\w*)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/;
@@ -17,10 +18,10 @@ module.exports = async function (msg, args) {
         }
     }
 
-    if (validURL(args)) {
+    if (validURL(request)) {
 
         const connection = await voiceChannel.join();
-        const stream = ytdl(args, {filter: 'audioonly'});
+        const stream = ytdl(request, {filter: 'audioonly'});
 
         connection.play(stream, {seek: 0, volume: 1})
             .on('finish', () => {
@@ -28,7 +29,7 @@ module.exports = async function (msg, args) {
                 msg.channel.send('Your taste sucks, never call me again');
             });
 
-        await message.reply(`Playing from link ${args} or whatever`)
+        await message.reply(`Playing from link ${request} or whatever`)
 
         return
     }
@@ -39,7 +40,7 @@ module.exports = async function (msg, args) {
         return (videoResult.videos.length > 1) ? videoResult.videos[0] : null;
     }
 
-    const video = await videoFinder(args);
+    const video = await videoFinder(request);
 
     if (video) {
         const stream = ytdl(video.url, {filter: "audioonly"});
@@ -48,6 +49,6 @@ module.exports = async function (msg, args) {
                 voiceChannel.leave();
                 msg.channel.send('Your taste sucks, never call me again');
             });
-        await msg.reply(`Playing some "${args}" or whatever`);
+        await msg.reply(`Playing some "${request}" or whatever`);
     }
 }
