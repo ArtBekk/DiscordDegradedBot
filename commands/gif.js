@@ -1,7 +1,6 @@
 const fetch = require('node-fetch');
 
 module.exports = async function (msg, keywords) {
-    console.log("Sending gif");
     switch (keywords) {
         case 'pug':
             msg.channel.send('https://media.giphy.com/media/ZX63w9xm4ilgs/giphy.gif');
@@ -33,10 +32,19 @@ module.exports = async function (msg, keywords) {
         case 'derpmeow':
             msg.channel.send('https://tenor.com/view/cat-meow-big-lips-gif-13233291');
             break;
-        case 'че бля' || 'чебля' || 'чёбля' || 'чё бля' :
+        case 'mememe':
+            msg.channel.send('https://media.giphy.com/media/YZX4FWwOJTK5W/giphy.gif');
+            break;
+        case 'че бля':
+        case 'чебля':
+        case 'чёбля':
+        case 'чё бля':
             msg.channel.send('https://tenor.com/view/buff-pikachu-strong-muscle-pokemon-gif-15308559');
             break;
-        case 'насука' || 'нассука' || 'на сука' || 'на ссука' :
+        case 'насука':
+        case 'нассука':
+        case 'на сука':
+        case 'на ссука':
             msg.channel.send('https://tenor.com/view/anime-gif-9509158');
             break;
         case 'дя' :
@@ -45,7 +53,8 @@ module.exports = async function (msg, keywords) {
         case 'бля' :
             msg.channel.send('https://tenor.com/view/blends-anime-maika-gif-10176024');
             break;
-        case 'nom' || 'жрать' :
+        case 'nom':
+        case 'жрать':
             msg.channel.send('https://tenor.com/view/eat-crab-anime-loli-dragon-gif-9920851');
             break;
         case 'ня' :
