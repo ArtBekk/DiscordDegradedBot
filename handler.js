@@ -12,6 +12,6 @@ module.exports = async function (msg) {
         command = command.substring(1);
         console.log('Command: ' + command);
         console.log('Args: ' + args);
-        commands[command](msg, args.toString());
+        commands[command](msg, args.join(' '));
     }
 }
