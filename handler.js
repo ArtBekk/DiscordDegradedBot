@@ -1,8 +1,8 @@
 const gif = require("./commands/gif.js")
-const ytPlayer = require("./commands/ytPlayer.js")
+const play = require("./commands/play.js")
 const status = require("./commands/status.js")
 
-const commands = {ytPlayer, gif, status};
+const commands = {play, gif, status};
 
 module.exports = async function (msg) {
     let args = msg.content.split(" ");
