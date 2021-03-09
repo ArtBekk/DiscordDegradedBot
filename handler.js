@@ -1,8 +1,9 @@
 const gif = require("./commands/gif.js")
 const play = require("./commands/play.js")
 const status = require("./commands/status.js")
+const leave = require("./commands/leave.js")
 
-const commands = {play, gif, status};
+const commands = {play, gif, status, leave};
 
 module.exports = async function (msg) {
     let args = msg.content.split(" ");
