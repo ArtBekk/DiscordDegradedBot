@@ -17,10 +17,10 @@ module.exports = async function (msg, args) {
         }
     }
 
-    if (validURL(args[0])) {
+    if (validURL(args)) {
 
         const connection = await voiceChannel.join();
-        const stream = ytdl(args[0], {filter: 'audioonly'});
+        const stream = ytdl(args, {filter: 'audioonly'});
 
         connection.play(stream, {seek: 0, volume: 1})
             .on('finish', () => {
