@@ -3,7 +3,7 @@
 Discord bot written in javascript with extensive usage of [discord.js](https://discord.js.org/#/). Hosted on Heroku with **about** 100% uptime, and you can find invitation link [here](https://discord.com/api/oauth2/authorize?client_id=817734810033848400&permissions=0&scope=bot).
 Written purely for ~~shits 'n' gigs~~ studying purposes and personal use.
 
-###Features
+### Features
 
 - Status command to check if bot is up and working
   
@@ -11,7 +11,7 @@ Written purely for ~~shits 'n' gigs~~ studying purposes and personal use.
   
 - Playing tracks from YouTube in voice chat (actual player functions are yet to be introduced)
 
-###Planned features:
+### Planned features:
 
 - Expanding functions of YouTube player (song queue, pause, skip and etc.)
 
