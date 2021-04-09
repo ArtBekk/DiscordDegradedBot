@@ -1,6 +1,6 @@
 # Discord Degraded bot V1.0.0
 
-Discord bot written in javascript with extensive usage of [discord.js](https://discord.js.org/#/). Hosted on Heroku with **about** 100% uptime, and you can find invitation link [here](https://discord.com/api/oauth2/authorize?client_id=817734810033848400&permissions=0&scope=bot).
+Discord bot written in javascript with extensive usage of [discord.py](https://discordpy.readthedocs.io/en/latest/index.html). Hosted on Heroku with ***about*** 100% uptime, and you can find invitation link [here](https://discord.com/api/oauth2/authorize?client_id=817734810033848400&permissions=0&scope=bot).
 Written purely for ~~shits 'n' gigs~~ studying purposes and personal use.
 
 ### Features
