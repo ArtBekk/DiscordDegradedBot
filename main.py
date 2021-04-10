@@ -1,22 +1,24 @@
 import os
 import discord
-from dotenv import load_dotenv
 
-load_dotenv()
+from dotenv import load_dotenv
+import discord_slash
 
 
 class MyClient(discord.Client):
     async def on_ready(self):
         print('Logged on as {0}!'.format(self.user))
 
-    async def on_message(self, message):
-        if message.content[0] == '!':
-            args = message.content.split()
-            if args[0] == '!status':
-                await message.reply('I\'m more alive than you, fag')
-            elif args[0] == '!purge':
-                await message.channel.purge(limit=int(args[1]))
-
 
 client = MyClient()
+slashCommandHandler = discord_slash.SlashCommand(client, sync_commands=True)
+
+
+@slashCommandHandler.slash(name="status",
+                           description="Is this bot alive or nah")
+async def status(ctx):
+    await ctx.send(content="I'm more alive than you, fag")
+
+
+load_dotenv()
 client.run(os.getenv('DISCORD_AUTH_TOKEN'))
