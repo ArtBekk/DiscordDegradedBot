@@ -50,7 +50,7 @@ async def stonks_check(ctx):
     my_str = my_bytes.decode("utf8")
     sample.close()
     soup = BeautifulSoup(my_str, 'html.parser')
-    regular_price = soup.find('div', {"class": "sku-price sku-price--primary sku-prices-block__price"}).text.split()
+    regular_price = soup.find('div', {"class": "sku-price sku-price--regular sku-prices-block__price"}).text.split()
     card_price = soup.find('div', {"class": "sku-price sku-price--primary sku-prices-block__price"}).text.split()
     regular_price = f"{regular_price[0]},{regular_price[1]}{regular_price[2]}"
     card_price = f"{card_price[0]},{card_price[1]}{card_price[2]}"
