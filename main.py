@@ -41,9 +41,9 @@ async def status(ctx, messageNum: int):
     await ctx.message.channel.purge(limit=messageNum)"""
 
 
-@slashCommandHandler.slash(name="stonksCheck",
-                           description="Checks price for beef Doshirak")
-async def stonksCheck(ctx):
+@slashCommandHandler.slash(name="stonks_check",
+                           description="Checks the prices for beef Doshirak")
+async def stonks_check(ctx):
     sample = urllib.request.urlopen(
         "https://lenta.com/product/lapsha-bystrogo-prigotovleniya-doshirak-so-vk-govyadiny-rossiya-105g-245818/")
     my_bytes = sample.read()
@@ -55,7 +55,7 @@ async def stonksCheck(ctx):
     regular_price = f"{regular_price[0]},{regular_price[1]}{regular_price[2]}"
     card_price = f"{card_price[0]},{card_price[1]}{card_price[2]}"
     await ctx.send(
-        content=f"Price for bums w/o card: {regular_price} and price for kings with the card: {card_price}")
+        content=f"Price for bums w/o the card: {regular_price} and price for kings with the card: {card_price}")
 
 
 load_dotenv()
