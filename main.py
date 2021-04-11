@@ -1,8 +1,14 @@
 import os
-import discord
-
 from dotenv import load_dotenv
+
+import discord
+from discord.ext.commands import has_permissions, CheckFailure
+
 import discord_slash
+from discord_slash.utils.manage_commands import create_option
+
+from bs4 import BeautifulSoup
+import urllib.request
 
 
 class MyClient(discord.Client):
@@ -19,6 +25,63 @@ slashCommandHandler = discord_slash.SlashCommand(client, sync_commands=True)
 async def status(ctx):
     await ctx.send(content="I'm more alive than you, fag")
 
+
+"""@slashCommandHandler.slash(name="purge",
+                           description="When you don't want any witnesses",
+                           options=[
+                               create_option(
+                                   name="messageNum",
+                                   description="How much garbage shall I remove?",
+                                   option_type=4,
+                                   required=True
+                               )
+                           ]
+                           )
+async def status(ctx, messageNum: int):
+    await ctx.message.channel.purge(limit=messageNum)"""
+
+
+@slashCommandHandler.slash(name="stonksCheck",
+                           description="Checks price for beef Doshirak")
+async def stonksCheck(ctx):
+    sample = urllib.request.urlopen(
+        "https://lenta.com/product/lapsha-bystrogo-prigotovleniya-doshirak-so-vk-govyadiny-rossiya-105g-245818/")
+    my_bytes = sample.read()
+    my_str = my_bytes.decode("utf8")
+    sample.close()
+    print(my_str)
+    soup = BeautifulSoup(my_str, 'html.parser')
+    regular_price = soup.find('div', {"class": "sku-price sku-price--primary sku-prices-block__price"}).text.split()
+    card_price = soup.find('div', {"class": "sku-price sku-price--primary sku-prices-block__price"}).text.split()
+    regular_price = f"{regular_price[0]},{regular_price[1]}{regular_price[2]}"
+    card_price = f"{card_price[0]},{card_price[1]}{card_price[2]}"
+    await ctx.send(
+        content=f"Price for bums w/o card: {regular_price} and price for kings with the card: {card_price}")
+
+
+"""sample = urllib.request.urlopen(
+    "https://lenta.com/product/lapsha-bystrogo-prigotovleniya-doshirak-so-vk-govyadiny-rossiya-105g-245818/")
+my_bytes = sample.read()
+my_str = my_bytes.decode("utf8")
+sample.close()
+soup = BeautifulSoup(my_str, 'html.parser')
+regular_price = soup.find('div', {"class": "sku-price sku-price--primary sku-prices-block__price"}).text.split()
+card_price = soup.find('div', {"class": "sku-price sku-price--primary sku-prices-block__price"}).text.split()
+print(
+    f"LENTA\nPrice for bums w/o card: {regular_price[0]},{regular_price[1]}{regular_price[2]}\nPrice for kings with card: {card_price[0]},{card_price[1]}{card_price[2]}")
+
+<div class="sku-prices-block__item  sku-prices-block__item--primary">
+                    <div class="sku-price sku-price--primary sku-prices-block__price">
+                      <span class="sku-price__integer">
+                        59
+                      </span>
+                      <small class="sku-price__fraction">
+                        39
+                      </small>
+                      <span class="sku-price__icon">
+                        ₽
+                      </span>
+                    </div>"""
 
 load_dotenv()
 client.run(os.getenv('DISCORD_AUTH_TOKEN'))
