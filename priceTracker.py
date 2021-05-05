@@ -23,9 +23,9 @@ async def check_market(channel):
             elif price < current_price:
                 await channel.send("https://imgur.com/RzJItGX")
                 await channel.send("THE END IS NEAR, PRICE IS RISING, STOCKPILE WHILE YOU CAN")
-            elif price == current_price:
-                await channel.send("https://i.imgur.com/DeyLAlZh.jpg")
-                await channel.send("No price fluctuation and no idea what it means either")
+        if price == current_price:
+            await channel.send("https://i.imgur.com/DeyLAlZh.jpg")
+            await channel.send("No price fluctuation and no idea what it means either")
         price = current_price
         await channel.send(message)
         await asyncio.sleep(21600)
