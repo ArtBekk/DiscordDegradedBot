@@ -6,16 +6,17 @@ import discord.ext
 import discord_slash
 from discord_slash.utils.manage_commands import create_option
 from dotenv import load_dotenv
-
+import asyncio
 import utils
-from priceChecker import thread_entry
+from priceTracker import check_market
 
 
 class MyClient(discord.Client):
     async def on_ready(self):
         print('Logged on as {0}!'.format(self.user))
-        thread = threading.Thread(target=thread_entry, args=(self,))
-        thread.start()
+        loop = asyncio.new_event_loop()
+        loop.create_task(await check_market(self.get_channel(830723947904368651)))
+        loop.run_forever()
 
     async def on_message(self, message):
         if message.content == 'hehe':
