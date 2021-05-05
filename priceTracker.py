@@ -16,7 +16,7 @@ async def check_market(channel):
         if metro.get("price") < lenta.get("price"):
             current_price = metro.get('price')
             message = f"Current best price {metro.get('price')} деревянных in {metro.get('marketName')}, da link {metro.get('URL')}"
-        if price != current_price and price is not None:
+        if price is not None and price != current_price:
             if price > current_price:
                 await channel.send("https://imgur.com/m4Vertv")
                 await channel.send("Yet another beautiful day for fans of doshirak: price went down")
