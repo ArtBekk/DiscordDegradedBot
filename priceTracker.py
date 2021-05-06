@@ -16,16 +16,16 @@ async def check_market(channel):
         if metro.get("price") < lenta.get("price"):
             current_price = metro.get('price')
             message = f"Current best price {metro.get('price')} деревянных in {metro.get('marketName')}, da link {metro.get('URL')}"
-        if price is not None and price != current_price:
+        if price is not None:
             if price > current_price:
                 await channel.send("https://imgur.com/m4Vertv")
                 await channel.send("Yet another beautiful day for fans of doshirak: price went down")
-            elif price < current_price:
+            if price < current_price:
                 await channel.send("https://imgur.com/RzJItGX")
                 await channel.send("THE END IS NEAR, PRICE IS RISING, STOCKPILE WHILE YOU CAN")
-        if price == current_price:
-            await channel.send("https://i.imgur.com/DeyLAlZh.jpg")
-            await channel.send("No price fluctuation and no idea what it means either")
+            if price == current_price:
+                await channel.send("https://imgur.com/a/M0lLThx")
+                await channel.send("No price fluctuation and no idea what it means either")
         price = current_price
         await channel.send(message)
         await asyncio.sleep(21600)
