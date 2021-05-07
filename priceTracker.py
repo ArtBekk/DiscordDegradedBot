@@ -10,12 +10,14 @@ async def check_market(channel):
         lenta = lenta_get_price(links_map.get("lenta"))
         current_price = None
         message = None
+        if price is None:
+            message = "da link {lenta.get('URL')}"
         if lenta.get("price") < metro.get("price"):
             current_price = lenta.get('price')
-            message = f"Current best price {lenta.get('price')} деревянных in {lenta.get('marketName')}, da link {lenta.get('URL')}"
+            message = f"Current best price {lenta.get('price')} деревянных in {lenta.get('marketName')}" + message
         if metro.get("price") < lenta.get("price"):
             current_price = metro.get('price')
-            message = f"Current best price {metro.get('price')} деревянных in {metro.get('marketName')}, da link {metro.get('URL')}"
+            message = f"Current best price {metro.get('price')} деревянных in {metro.get('marketName')}" + message
         if price is not None:
             if price > current_price:
                 await channel.send("https://imgur.com/m4Vertv")
