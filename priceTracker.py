@@ -11,7 +11,7 @@ async def check_market(channel):
         current_price = None
         message = None
         if price is None:
-            message = "da link {lenta.get('URL')}"
+            message = f"da link {lenta.get('URL')}"
         if lenta.get("price") < metro.get("price"):
             current_price = lenta.get('price')
             message = f"Current best price {lenta.get('price')} деревянных in {lenta.get('marketName')}" + message
